@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="favorite.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+    <title>Track Your Favorites!</title>
+  </head>
+  <body>
+    <section>
+      <h2>Favorites <span class="red">&hearts;</span></h2>
+      <div ng-controller="FavoriteCtrl">
+        <form ng-submit="addFavorite()">
+          <input type="text" ng-model="favoriteText"  size="30"
+                 placeholder="Add something to track here">
+          <input class="btn-primary" type="submit" value="add">
+        </form>
+
+        <table>
+          <tbody>
+            <tr ng-repeat="favorite in favorites">
+              <td><strong>{{favorite.text}}</strong></td>
+              <td>{{favorite.score}}</td>
+              <td><input type="button" value="+1" ng-click="favorite.score = favorite.score + 1"></td>
+              <td><input type="button" value="-1" ng-click="favorite.score = favorite.score - 1"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>
