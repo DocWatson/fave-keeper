@@ -1,4 +1,4 @@
-fave-keeper
+Friend Voter
 ===========
 
-FaveKeeper is a simple app built with AngularJS and a data store to keep track of your favorite things
+Friend Voter is a simple app built with AngularJS and a data store to keep track of your favorite things
