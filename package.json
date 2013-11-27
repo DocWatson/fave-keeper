@@ -1,0 +1,19 @@
+{
+  "name": "Friend-Voter",
+  "version": "0.0.1",
+  "description": "A simple app powered by Angular to let you keep track how cool your friends are being to you.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DocWatson/friend-votert"
+  },
+  "author": "Beau Watson",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "express": "~3.4.1",
+    "mongoose": "~3.6.20"
+  }
+}
