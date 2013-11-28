@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="fkFriends">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
     <script src="favorite.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css">
@@ -10,20 +10,30 @@
   <body>
     <section>
       <h2>Favorites <span class="red">&hearts;</span></h2>
-      <div ng-controller="FavoriteCtrl">
-        <form ng-submit="addFavorite()">
-          <input type="text" ng-model="favoriteText"  size="30"
-                 placeholder="Add something to track here">
+      <div ng-controller="favoriteCtrl">
+        <form ng-submit="addFriend()">
+          <input type="text" ng-model="newFriendText.text"  size="30" placeholder="Add a new friend">
           <input class="btn-primary" type="submit" value="add">
         </form>
+        
+        <p>Click on the name heading to change sorting.</p>
 
-        <table>
+        <table cellspacing="0">
+          <thead>
+              <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
+              <th>Score</th>
+              <th colspan="3" class="narrower">Controls</th>
+          </thead>
           <tbody>
-            <tr ng-repeat="favorite in favorites">
-              <td><strong>{{favorite.text}}</strong></td>
-              <td>{{favorite.score}}</td>
-              <td><input type="button" value="+1" ng-click="favorite.score = favorite.score + 1"></td>
-              <td><input type="button" value="-1" ng-click="favorite.score = favorite.score - 1"></td>
+            <tr ng-if="friends.length < 1">
+              <td colspan="5" class="callout">There are no records! Use the form above to get started</td>
+            </tr>
+            <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
+              <td><strong>{{friend.name}}</strong></td>
+              <td>{{friend.score}}</td>
+              <td><input type="button" value="+1" ng-click="plusOne(friend._id, friend.score)"></td>
+              <td><input type="button" value="-1" ng-click="minusOne(friend._id, friend.score)"></td>
+              <td><input type="button" value="delete" ng-click="deleteFriend(friend._id)"></td>
             </tr>
           </tbody>
         </table>

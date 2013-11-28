@@ -14,3 +14,10 @@ app.configure(function() {
     app.use(express.bodyParser());                      // pull information from html in POST
     app.use(express.methodOverride());                  // simulate DELETE and PUT
   });
+
+// routes ======================================================================
+  require('./app/routes.js')(app);
+
+
+// run the server at the desired port
+app.listen(port);

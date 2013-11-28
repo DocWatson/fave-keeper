@@ -1,10 +1,69 @@
-function FavoriteCtrl($scope) {
-  $scope.favorites = [];
- 
-  $scope.addFavorite= function() {
-    if($scope.favoriteText != '') {
-      $scope.favorites.push({text:$scope.favoriteText, score:0});
-      $scope.favoriteText = '';
-    }
-  };
+var fkFriends = angular.module('fkFriends', []);
+
+
+ function favoriteCtrl($scope, $http) {
+	$scope.formData = {};
+
+	$http.get('/api/friends')
+		.success(function(data) {
+			$scope.friends = data;
+			console.log(data);
+		})
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
+
+	$scope.addFriend = function() {
+	    if($scope.newFriendText.text != '') {
+	      $http.post('/api/friends', $scope.newFriendText)
+				.success(function(data) {
+					$scope.newFriendText = '';
+					$scope.friends = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+	    }
+	};
+
+	$scope.deleteFriend = function(id) {
+		$http.delete('/api/friends/' + id)
+			.success(function(data) {
+				$scope.friends = data;
+				console.log(data);
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
+	};
+
+	$scope.minusOne = function(id,score) {
+		score -= 1;
+
+		$http.post('/api/friends/score/' + id, {score: score})
+				.success(function(data) {
+					$scope.newFriendText = '';
+					$scope.friends = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+	};
+
+	$scope.plusOne = function(id,score) {
+		score +=1;
+
+		$http.post('/api/friends/score/' + id, {score: score})
+				.success(function(data) {
+					$scope.newFriendText = '';
+					$scope.friends = data;
+					console.log(data);
+				})
+				.error(function(data) {
+					console.log('Error: ' + data);
+				});
+	};
+  	
 }

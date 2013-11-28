@@ -3,6 +3,26 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+table {
+	margin: 1em 0;
+	width: 100%;
+}
+
+table th {
+	background: #FCC;
+	color: #333;
+}
+
+table th a {
+	color: #333;
+	text-decoration: none;
+}
+
+table td {
+	border-bottom: 1px solid #EEE;
+	text-align: center;
+}
+
 section {
 	background: #FFF;
 	border-radius: 10px;
@@ -20,6 +40,15 @@ section ul {
 
 section ul li {
 	margin: .3em 0;
+}
+
+.callout {
+	background: #DEDEDE;
+	padding: .15em 0;
+}
+
+.narrower {
+	width: 20%;
 }
 
 .red {
