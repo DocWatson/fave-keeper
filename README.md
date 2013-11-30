@@ -24,6 +24,16 @@ This version of the application assumes you have MongoDB installed on your local
 
 Alternatively, if you have a Mongo datastore elsewhere, you can modify the url in config/database.js with the appropriate paths.
 
+Socket.io Integration
+=============
+
+As of 11/29/2013, The project now has socket.io integration! Any user connected to the app will see the changes to the list as they happen in real-time. 
+
+In Progress Features
+=============
+
+Currently, I am working on using passport to authenticate an administrative user. Initial progress can be seen on the `auth version` branch.
+
 Credits
 ============
 I'd love to extend my thanks to Chris Sevilleja over at [scotch.io](http://scotch.io) for his single page MEAN app tutorials. They have been essential in refining my understanding of this server environment, and I definitely recommend reading his stuff.
