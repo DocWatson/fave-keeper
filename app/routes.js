@@ -1,4 +1,4 @@
-// load the todo model
+// load the friends model
 var Friend = require('./models/friends');
 
 // expose the routes to our app with module.exports
