@@ -1,9 +1,9 @@
 // load the friends model
 var Friend = require('./models/friends');
-var Admin  = require('./models/admin')
+var Admin  = require('./models/admin');
 
 // expose the routes to our app with module.exports
-module.exports = function(app) {
+module.exports = function(app, authorizer) {
 
 	// api ---------------------------------------------------------------------
 
@@ -80,12 +80,27 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/admin', function(req, res) {
+	app.get('/admin', authorizer.requiredAuthentication, function(req, res) {
 		res.sendfile('./public/index-admin.html'); // if at the Admin URL, load the admin template
 	});
 
 	app.get('/login', function(req, res) {
 		res.sendfile('./public/login.html'); // login
+	});
+
+	app.post("/login", function (req, res) {
+	    authorizer.authenticate(req.body.username, req.body.password, function (err, user) {
+	        if (user) {
+	            req.session.regenerate(function () {
+	                req.session.user = user;
+	                res.redirect('/admin');
+	            });
+	        } else {
+	            req.session.error = 'Authentication failed, please check your ' + ' username and password.';
+
+	            res.json({'errMsg':'Auth Failed'});
+	        }
+	    });
 	});
 
 	// application -------------------------------------------------------------

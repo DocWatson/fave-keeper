@@ -14,8 +14,10 @@
   <body>
     <section>
       <h2>Login <span class="red">&hearts;</span></h2>
+
       <div ng-controller="favoriteCtrl">
-        <form>
+        <p>{{errorMsg}}</p>
+        <form ng-submit="authorize()">
           <input type="text" ng-model="formData.username"  size="30" placeholder="Username"><br>
           <input type="password" ng-model="formData.password" size="30" placeholder="Password">
           <input class="btn-primary" type="submit" value="Login">

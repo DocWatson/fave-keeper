@@ -4,8 +4,6 @@ var fkFriends = angular.module('fkFriends', []);
  function favoriteCtrl($scope, $http, socket) {
 	$scope.formData = {};
 
-	
-
 	$http.get('/api/friends')
 		.success(function(data) {
 			$scope.friends = data;
@@ -18,6 +16,16 @@ var fkFriends = angular.module('fkFriends', []);
 	socket.on('list:update', function (data) {
     	$scope.friends = data;
   	});
+
+	$scope.authorize = function() {
+		$http.post('/login', $scope.formData)
+				.success(function(data) {
+					$scope.errorMsg = data.errMsg;
+				})
+				.error(function(data) {
+					console.log(data);
+				});
+	};
 
 	$scope.addFriend = function() {
 	    if($scope.newFriendText.text != '') {

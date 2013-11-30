@@ -8,6 +8,7 @@
   var LocalStrategy = require('passport-local').Strategy; //use passport-local for local authentication
   var server = require('http').createServer(app);
   var io = require('socket.io').listen(server);
+  var authorizer = require('./app/controllers/authorization');
 
 //Connect to the database
 mongoose.connect(database.url);
@@ -25,11 +26,10 @@ app.configure(function() {
   });
 
 // routes ======================================================================
-  require('./app/routes.js')(app);
+  require('./app/routes.js')(app, authorizer);
 
 
 // Socket.io Communication
-
 io.sockets.on('connection', require('./app/socket-routes.js'));
 
 server.listen(app.get('port'), function () {
