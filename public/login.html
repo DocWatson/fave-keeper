@@ -1,18 +1,22 @@
 <!doctype html>
 <html ng-app="fkFriends">
   <head>
+    <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="favorite.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css">
-    <title>Track Your Favorites...but log in First</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Track Your Favorites...but log in first!</title>
   </head>
   <body>
     <section>
       <h2>Login <span class="red">&hearts;</span></h2>
       <div ng-controller="favoriteCtrl">
         <form>
-          <input type="text" ng-model="formData.username"  size="30" placeholder="Username">
+          <input type="text" ng-model="formData.username"  size="30" placeholder="Username"><br>
           <input type="password" ng-model="formData.password" size="30" placeholder="Password">
           <input class="btn-primary" type="submit" value="Login">
         </form>
