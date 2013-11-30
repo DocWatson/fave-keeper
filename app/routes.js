@@ -1,4 +1,4 @@
-// load the todo model
+// load the friends model
 var Friend = require('./models/friends');
 var Admin  = require('./models/admin')
 

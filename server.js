@@ -6,8 +6,8 @@
   var database = require('./config/database');  // load the database config
   var passport = require("passport");           // load passport for user auth
   var LocalStrategy = require('passport-local').Strategy; //use passport-local for local authentication
-
-
+  var server = require('http').createServer(app);
+  var io = require('socket.io').listen(server);
 
 //Connect to the database
 mongoose.connect(database.url);
@@ -21,11 +21,13 @@ app.configure(function() {
     app.use(express.session({ secret: 'favekeeper-secrets' }));
     app.use(passport.initialize());
     app.use(passport.session());                 
+    app.set('port', port);
   });
 
 // routes ======================================================================
   require('./app/routes.js')(app);
 
 
-// run the server at the desired port
-app.listen(port);
+// Socket.io Communication
+io.sockets.on('connection', require('./app/socket-routes.js'));
+

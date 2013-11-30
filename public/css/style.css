@@ -1,0 +1,57 @@
+body {
+	background: #333;
+	font-family: 'Open Sans', sans-serif;
+}
+
+table {
+	margin: 1em 0;
+	width: 100%;
+}
+
+table th {
+	background: #FCC;
+	color: #333;
+}
+
+table th a {
+	color: #333;
+	text-decoration: none;
+}
+
+table td {
+	border-bottom: 1px solid #EEE;
+	text-align: center;
+}
+
+section {
+	background: #FFF;
+	border-radius: 10px;
+	color: #5a5a5a;
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 1em 2em;
+	width: 80%;
+}
+
+section ul {
+	list-style: none;
+	margin: 1em 0;
+	padding: 0;
+}
+
+section ul li {
+	margin: .3em 0;
+}
+
+.callout {
+	background: #DEDEDE;
+	padding: .15em 0;
+}
+
+.narrower {
+	width: 20%;
+}
+
+.red {
+	color: #FF3333;
+}

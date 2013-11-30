@@ -1,21 +1,20 @@
 <!doctype html>
 <html ng-app="fkFriends">
   <head>
+    <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="favorite.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Track Your Favorites!</title>
   </head>
   <body>
     <section>
       <h2>Favorites <span class="red">&hearts;</span></h2>
       <div ng-controller="favoriteCtrl">
-        <form ng-submit="addFriend()">
-          <input type="text" ng-model="newFriendText.text"  size="30" placeholder="Add a new friend">
-          <input class="btn-primary" type="submit" value="add">
-        </form>
-        
         <p>Click on the name heading to change sorting.</p>
 
         <table cellspacing="0">
