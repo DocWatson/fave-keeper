@@ -1,4 +1,5 @@
 var Admin  = require('../models/admin');
+require('../utils/hash');
 
 module.exports = {
 	authenticate: function (name, pass, fn) {

@@ -1,6 +1,7 @@
 // load the friends model
 var Friend = require('./models/friends');
 var Admin  = require('./models/admin');
+var hasher = require('./utils/hash');
 
 // expose the routes to our app with module.exports
 module.exports = function(app, authorizer) {
