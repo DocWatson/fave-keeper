@@ -21,6 +21,9 @@ var fkFriends = angular.module('fkFriends', []);
 		$http.post('/login', $scope.formData)
 				.success(function(data) {
 					$scope.errorMsg = data.errMsg;
+					if (data.success == 'true') {
+						window.location.href = '/admin';
+					}
 				})
 				.error(function(data) {
 					console.log(data);

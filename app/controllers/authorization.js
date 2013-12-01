@@ -1,18 +1,18 @@
 var Admin  = require('../models/admin');
-require('../utils/hash');
+var pwd = require('pwd');
 
 module.exports = {
 	authenticate: function (name, pass, fn) {
 	    if (!module.parent) console.log('authenticating %s:%s', name, pass);
 
-	    Admin.findOne({
+	   Admin.findOne({
 	        username: name
 	    },
 
 	    function (err, user) {
 	        if (user) {
 	            if (err) return fn(new Error('cannot find user'));
-	            hash(pass, user.salt, function (err, hash) {
+	            pwd.hash(pass, user.salt, function (err, hash) {
 	                if (err) return fn(err);
 	                if (hash == user.hash) return fn(null, user);
 	                fn(new Error('invalid password'));

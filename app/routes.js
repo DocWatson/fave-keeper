@@ -1,7 +1,6 @@
 // load the friends model
 var Friend = require('./models/friends');
 var Admin  = require('./models/admin');
-var hasher = require('./utils/hash');
 
 // expose the routes to our app with module.exports
 module.exports = function(app, authorizer) {
@@ -94,7 +93,7 @@ module.exports = function(app, authorizer) {
 	        if (user) {
 	            req.session.regenerate(function () {
 	                req.session.user = user;
-	                res.redirect('/admin');
+	                res.json({'success':'true'});
 	            });
 	        } else {
 	            req.session.error = 'Authentication failed, please check your ' + ' username and password.';
